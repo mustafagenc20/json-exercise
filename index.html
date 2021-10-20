@@ -1,0 +1,11 @@
+<html>
+    <body>
+    <h1 id= "demo"></h1>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/todos/2')
+        .then((response) => response.json())
+        .then(todo => document.getElementById("demo").innerHTML = todo.title)
+       </script>
+	</body>
+
+</html>
