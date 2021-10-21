@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title id = user></title>
+</head>
+<body>
+
+<h1 id="demo"></h1>
+
+<script>
+  fetch_func = function() {
+    fetch("https://jsonplaceholder.typicode.com/users/")
+            .then(resp => resp.json())
+            .then(users => document.getElementById("demo").innerHTML = user.) 
+    console.log("Function done")
+  }
+  fetch_func();
+</script>
+
+</body>
+</html>
