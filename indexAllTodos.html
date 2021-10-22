@@ -12,18 +12,22 @@
 </html> -->
 
 <!DOCTYPE html>
-<html>
-<head>
-    <title id="todos"></title>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>todo</title>
 </head>
 <body>
-<script>
-    fetch_func = function () {
-        fetch('https://jsonplaceholder.typicode.com/todos')
-            .then(response => response.json())
-            .then(todos => document.map("todos").innerHTML = todos)
+<h1 id="demo"></h1>
+
+    <script>
+        fetch_func = function() {
+            fetch("https://jsonplaceholder.typicode.com/todos")
+                .then(resp => resp.json())
+                .then(todos => {
+                    // todos toevoegen/afdrukken in het documnet
+                    
+                })
     }
     fetch_func()
 </script>
 </body>
-</html>
