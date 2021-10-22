@@ -25,6 +25,11 @@
                 .then(resp => resp.json())
                 .then(todos => {
                     // todos toevoegen/afdrukken in het documnet
+                    let allTodos = ''
+                    todos.forEach(todo => { // Each todo, add it into the document
+                        allTodos += JSON.stringify(todo) + "<br>"
+                    })
+                    document.getElementById("demo").innerHTML = allTodos
                     
                 })
     }
