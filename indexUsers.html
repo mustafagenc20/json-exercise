@@ -1,21 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title id = user></title>
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title>users</title>
 </head>
 <body>
+  <h1 id="demo"></h1>
 
-<h1 id="demo"></h1>
-
-<script>
-  fetch_func = function() {
-    fetch("https://jsonplaceholder.typicode.com/users/")
+  <script>
+    fetch_func = function () {
+      fetch("https://jsonplaceholder.typicode.com/todos")
+        .then((resp) => resp.json())
+        .then((todos) => {
+          let allTodos = ''
+          todos.forEach((todo) => {
+            fetch("https://jsonplaceholder.typicode.com/users/" + todo.userId)
+              .then((resp) => resp.json())
+              .then((user) => {
+                todo.userId = user.name
+                allTodos = allTodos + JSON.stringify(todo) + "<br>"
+                // console.log(allTodos)
+                document.getElementById("demo").innerHTML = allTodos
+              })
+          })
+        })
+    }
+    fetch_func();
+  </script>
+  <!-- <script>
+    fetch_func = function() {
+        fetch("https://jsonplaceholder.typicode.com/todos") // GET https://jsonplaceholder.typicode.com/todos
             .then(resp => resp.json())
-            .then(users => document.getElementById("demo").innerHTML = user.) 
-    console.log("Function done")
-  }
-  fetch_func();
-</script>
-
+            .then(todos => {
+               // ToDos toevoegen/afdrukken in het document
+               let allTodos = ''
+               todos.forEach(todo => { // Each todo, add it to the document
+                 fetch('https://jsonplaceholder.typicode.com/users/' + todo.userId)
+                    .then(resp => resp.json())
+                    .then(user => {
+                       todo.userId = user.name 
+                       allTodos = allTodos + JSON.stringify(todo) + "<BR>"
+                       document.getElementById("demo").innerHTML = allTodos
+                    })
+               })
+        })
+    }
+    fetch_func()
+</script> -->
 </body>
-</html>
